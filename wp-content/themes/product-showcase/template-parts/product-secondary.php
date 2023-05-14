@@ -2,8 +2,8 @@
     <div class="product-primary">
         <h2 class="product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <div class="product-meta">
-            <a class="meta-shockcode" href="#">Code: 650204111</a>
-            <span class="meta-price">$ 179.99</span>
+            <a class="meta-shockcode"><?php echo the_category(); ?></a>
+            <span class="meta-date"><?php echo get_the_date(); ?></span>
         </div>
         <div class="product-details product-details-table">
             <span>Type</span><span>Washing machine</span>
