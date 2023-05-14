@@ -46,11 +46,12 @@ add_shortcode('display_username', 'product_showcase_display_username');
 /**
  * Items enqueue
  */
-function item_enqueue_scripts() {
-	wp_enqueue_script( 'item-script', plugins_url( 'assets/scripts/scripts.js', __FILE__ ), array( 'jquery' ), 1.1 );
-	wp_localize_script( 'item-script', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+function item_enqueue_scripts()
+{
+    wp_enqueue_script('item-script', plugins_url('assets/scripts/scripts.js', __FILE__), array('jquery'), 1.1);
+    wp_localize_script('item-script', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
-add_action( 'wp_enqueue_scripts', 'item_enqueue_scripts' );
+add_action('wp_enqueue_scripts', 'item_enqueue_scripts');
 
 /**
  * Function take care of the upvote of the item
@@ -72,3 +73,28 @@ function product_item_upvote()
 }
 add_action('wp_ajax_nopriv_product_item_upvote', 'product_item_upvote');
 add_action('wp_ajax_product_item_upvote', 'product_item_upvote');
+
+/**
+ * Display a single post term function
+ *
+ * @param integer $post_id
+ * @param [type] $taxonomy
+ * @return void
+ */
+function items_display_single_term($post_id, $taxonomy)
+{
+
+    if (empty($post_id) || empty($taxonomy)) {
+        return;
+    }
+    $terms = get_the_terms($post_id, $taxonomy);
+    //var_dump( $terms ); 
+    $output = '';
+    if (!empty($terms) && is_array($terms)) {
+        foreach ($terms as $term) {
+            $output .= $term->name . ', ';
+        }
+    }
+
+    return $output;
+}

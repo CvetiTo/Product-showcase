@@ -7,7 +7,7 @@
         </div>
         <div class="product-details product-details-table">
             <span>Type</span><span>Washing machine</span>
-            <span>Brand</span><span>HAIER</span>
+            <span>Brand</span><span><a><?php echo items_display_single_term(get_the_ID(), 'field'); ?></a></span>
             <span>Model</span><span>HW80-B14939-S</span>
         </div>
     </div>
