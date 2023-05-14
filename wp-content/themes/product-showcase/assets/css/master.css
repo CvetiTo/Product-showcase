@@ -533,7 +533,10 @@ a {
 .button-wide {
   width: 100%;
 }
-
+.meta-date{
+  font-weight: 900;
+  color: rgb(55, 211, 55);
+}
 @media (max-width: 960px) {
   .product-single {
     flex-direction: column;
