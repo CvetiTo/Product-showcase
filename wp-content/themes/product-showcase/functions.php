@@ -15,3 +15,21 @@ function product_assets()
     );
 }
 add_action('wp_enqueue_scripts', 'product_assets');
+
+/**
+ * This function search word in content of the site, and replace it 
+ *
+ * @param [type] $title
+ * @return void
+ */
+function detect_word( $content ) {
+    //var_dump( $content );
+    $search = 'Welcome';
+    if ( str_contains( $content, $search ) ) {
+       $new_str = str_replace(  $search, '<span style="color:green">NEW-TEST-WORD</span>', $content);
+    } else {
+        $new_str = $content .= '<p style="color:red">Word doesn`t match!<p/>';
+    }
+    return $new_str;
+}
+add_filter( 'the_content', 'detect_word' );
