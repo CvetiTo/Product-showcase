@@ -31,9 +31,7 @@ function product_showcase_display_username()
 {
     $output = '';
     if (is_user_logged_in()) {
-        //var_dump('Yes, we are logged in!');
         $current_user = wp_get_current_user();
-        //var_dump($current_user);
         $user_display_name = $current_user->data->display_name;
         $user_url = $current_user->data->user_url;
         $output = 'Hey ' . strtoupper($user_display_name) . ', you are the BEST!!! ' . '<br>' .
@@ -44,3 +42,33 @@ function product_showcase_display_username()
     return $output;
 }
 add_shortcode('display_username', 'product_showcase_display_username');
+
+/**
+ * Items enqueue
+ */
+function item_enqueue_scripts() {
+	wp_enqueue_script( 'item-script', plugins_url( 'assets/scripts/scripts.js', __FILE__ ), array( 'jquery' ), 1.1 );
+	wp_localize_script( 'item-script', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+}
+add_action( 'wp_enqueue_scripts', 'item_enqueue_scripts' );
+
+/**
+ * Function take care of the upvote of the item
+ *
+ * @return void
+ */
+function product_item_upvote()
+{
+    $item_id = esc_attr($_POST['item_id']);
+    $upvote_numbers = get_post_meta($item_id, 'upvote', true);
+
+    if (empty($upvote_numbers)) {
+        update_post_meta($item_id, 'upvote', 1);
+    } else {
+        $upvote_numbers = $upvote_numbers + 1;
+        update_post_meta($item_id, 'upvote', $upvote_numbers);
+    }
+    wp_die();
+}
+add_action('wp_ajax_nopriv_product_item_upvote', 'product_item_upvote');
+add_action('wp_ajax_product_item_upvote', 'product_item_upvote');

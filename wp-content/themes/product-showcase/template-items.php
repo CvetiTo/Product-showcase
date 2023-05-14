@@ -28,7 +28,7 @@ if(have_posts()) {
 
 		<?php while ($items_query->have_posts()) : $items_query->the_post(); ?>
 
-		<?php get_template_part( 'template-parts/product', 'secondary'); ?> ?>
+		<?php get_template_part( 'template-parts/product', 'secondary'); ?> 
 
 		<?php endwhile; ?>
 

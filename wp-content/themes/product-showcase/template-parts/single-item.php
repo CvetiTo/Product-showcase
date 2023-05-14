@@ -40,6 +40,6 @@
                 ?>
             </div>
         </div>
-        <a href="#" class="button button-wide">Buy now</a>
+        <a id="<?php echo get_the_ID(); ?>" class="button button-wide" href="#">Upvote the item (<?php echo get_post_meta( get_the_ID(), 'upvote', true) ?>)</a>
     </aside>
 </div>
