@@ -41,3 +41,38 @@ function product_items_cpt() {
 }
 
 add_action( 'init', 'product_items_cpt' );
+
+/**
+ * Register a 'field' taxonomy for post type 'item', with a rewrite to match book CPT slug.
+ *
+ * @see register_post_type for registering post types.
+ */
+function product_item_field_taxonomy() {
+    // Add new taxonomy, make it hierarchical (like categories)
+	$labels = array(
+		'name'              => _x( 'Fields', 'taxonomy general name', 'product' ),
+		'singular_name'     => _x( 'Field', 'taxonomy singular name', 'product' ),
+		'search_items'      => __( 'Search Fields', 'product' ),
+		'all_items'         => __( 'All Fields', 'product' ),
+		'parent_item'       => __( 'Parent Field', 'product' ),
+		'parent_item_colon' => __( 'Parent Field:', 'product' ),
+		'edit_item'         => __( 'Edit Field', 'product' ),
+		'update_item'       => __( 'Update Field', 'product' ),
+		'add_new_item'      => __( 'Add New Field', 'product' ),
+		'new_item_name'     => __( 'New Field Name', 'product' ),
+		'menu_name'         => __( 'Field', 'product' ),
+	);
+
+    $args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+        'show_in_rest'         => true,
+	);
+
+    register_taxonomy( 'field', 'item', $args ) ;      
+    
+}
+add_action( 'init', 'product_item_field_taxonomy' );
