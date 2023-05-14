@@ -5,7 +5,7 @@
                 <header class="product-header">
                     <h2 class="product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     <div class="product-meta">
-                        <a class="meta-shockcode"> Code: 650204112  </a>
+                        <a class="meta-shockcode"> Code: 650204112 </a>
                         <span class="meta-date"><?php echo get_the_date(); ?></span>
                     </div>
                     <div class="product-details product-details-table">

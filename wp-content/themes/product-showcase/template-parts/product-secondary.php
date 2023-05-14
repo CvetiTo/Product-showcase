@@ -13,7 +13,7 @@
     </div>
     <div class="product-logo">
         <div class="product-logo-box">
-        <?php
+            <?php
             if (has_post_thumbnail()) {
                 the_post_thumbnail();
             } else {

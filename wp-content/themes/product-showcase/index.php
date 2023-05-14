@@ -1,17 +1,17 @@
 <?php get_header(); ?>
 
 <ul class="products-listing">
-<?php if (have_posts()) : ?>
+	<?php if (have_posts()) : ?>
 
-<?php while (have_posts()) : the_post(); ?>
+		<?php while (have_posts()) : the_post(); ?>
 
-	<?php get_template_part( 'template-parts/product', 'primary'); ?> 
+			<?php get_template_part('template-parts/product', 'primary'); ?>
 
-<?php endwhile; ?>
+		<?php endwhile; ?>
 
-<?php posts_nav_link(); ?>
+		<?php posts_nav_link(); ?>
 
-<?php endif; ?>
+	<?php endif; ?>
 
 	<li class="product-card">
 		<div class="product-primary">

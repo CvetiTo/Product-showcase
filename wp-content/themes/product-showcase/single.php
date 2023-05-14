@@ -4,7 +4,7 @@ Single
 	<?php while (have_posts()) :  ?>
 		<?php the_post(); ?>
 
-		<?php get_template_part( 'template-parts/single', 'post'); ?> 
+		<?php get_template_part('template-parts/single', 'post'); ?>
 
 	<?php endwhile; ?>
 
