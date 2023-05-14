@@ -39,7 +39,6 @@
                 ?>
             </div>
         </div>
-        <a href="#" class="button button-wide">Buy now</a>
     </aside>
 </div>
 
